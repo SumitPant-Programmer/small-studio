@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sumit Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6f8;--ink:#14213d;--muted:#51607a;--card:#ffffff;--line:#d5dde6;--accent:#0f8b8d;--accent-ink:#ffffff;--sun:#f2c14e;
+--head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;--body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1620;--ink:#e8eef3;--muted:#9fb0c3;--card:#172230;--line:#27374a;--accent:#4fd1c5;--accent-ink:#0f1620;--sun:#f2c14e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1620;--ink:#e8eef3;--muted:#9fb0c3;--card:#172230;--line:#27374a;--accent:#4fd1c5;--accent-ink:#0f1620;--sun:#f2c14e;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font:700 1.3rem var(--head);text-decoration:none;display:flex;align-items:center;gap:.55rem;letter-spacing:-.01em}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 4px color-mix(in srgb,var(--sun) 30%,transparent)}
+nav{display:flex;gap:.25rem}
+nav a{text-decoration:none;padding:.5rem .95rem;border-radius:999px;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+nav a.on{background:var(--ink);color:var(--bg)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:.5rem .8rem;font:500 1rem var(--body);cursor:pointer}
+h1,h2,h3{font-family:var(--head);line-height:1.08;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:700;max-width:14ch}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:700;margin-bottom:1rem}
+h3{font-size:1.25rem;font-weight:700;margin-bottom:.4rem}
+p{margin:0 0 1rem;max-width:62ch}
+.lead{font-size:1.2rem;color:var(--muted);max-width:52ch}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.85rem 1.4rem;border-radius:12px;font-weight:500;text-decoration:none;border:0;cursor:pointer;font:500 1rem var(--body)}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-left:.6rem}
+.hero{padding:4.5rem 0 3rem;animation:rise .7s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero{animation:none}*{transition:none!important}}
+.hero .lead{margin:1.4rem 0 2rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:2rem 0 1rem}
+.tab{border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:.6rem 1.1rem;border-radius:999px;font:500 1rem var(--body);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.75rem;display:grid;grid-template-columns:1.1fr 1fr;gap:1.5rem;align-items:center}
+.panel ul{margin:0;padding:0;list-style:none;display:grid;gap:.6rem}
+.panel li{padding:.7rem 1rem;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+section{padding:3.5rem 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;counter-reset:s}
+.step{border-top:3px solid var(--accent);padding-top:1rem}
+.step::before{counter-increment:s;content:"Step " counter(s);display:block;color:var(--muted);font-size:.9rem;margin-bottom:.3rem}
+.band{background:var(--ink);color:var(--bg);border-radius:24px;padding:2.5rem;display:flex;gap:1.5rem;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.band h2{margin:0;max-width:20ch}
+.band .btn{background:var(--sun);color:#14213d}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.5rem}
+.av{width:56px;height:56px;border-radius:50%;background:var(--sun);color:#14213d;display:grid;place-items:center;font:700 1.1rem var(--head);margin-bottom:1rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+label{display:block;font-weight:500;margin:0 0 .35rem}
+input,textarea{width:100%;font:400 1rem var(--body);padding:.8rem 1rem;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);margin-bottom:1rem}
+textarea{min-height:140px;resize:vertical}
+.info p{margin-bottom:.5rem}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.table-scroll{overflow-x:auto}
+@media (max-width:760px){
+.menu{display:block}
+nav{display:none;position:absolute;left:0;right:0;top:68px;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:.75rem 1.25rem 1rem}
+nav.open{display:flex}
+.panel,.steps,.grid3,.two{grid-template-columns:1fr}
+.btn.ghost{margin:.6rem 0 0}
+.hero{padding-top:2.5rem}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const {useState,useEffect} = React;
+const html = htm.bind(React.createElement);
+const PAGES = ["home","about","contact"];
+const LABEL = {home:"Home",about:"About",contact:"Contact"};
+const EMAIL = "hello@example.com";
+
+const SERVICES = {
+  Websites:{text:"Fast, clear websites that look right on every screen and are easy to keep up to date.",items:["Business and portfolio sites","Online booking and enquiry forms","Simple shops and landing pages"]},
+  Branding:{text:"A name, a look and a voice that people recognise before they read the small print.",items:["Logo and colour system","Social media kits","Printed cards, menus and flyers"]},
+  Apps:{text:"Useful tools for your team or customers, built around the job they need done.",items:["Dashboards and trackers","Customer portals","Calculators and planners"]}
+};
+
+function Header({view}){
+  const [open,setOpen] = useState(false);
+  return html`<header><div className="wrap bar">
+    <a className="brand" href="#home"><span className="dot"></span>Sumit Studio</a>
+    <button className="menu" aria-expanded=${open} aria-label="Toggle menu" onClick=${()=>setOpen(!open)}>${open?"Close":"Menu"}</button>
+    <nav className=${open?"open":""} aria-label="Main">
+      ${PAGES.map(p=>html`<a key=${p} href=${"#"+p} className=${view===p?"on":""} aria-current=${view===p?"page":undefined} onClick=${()=>setOpen(false)}>${LABEL[p]}</a>`)}
+    </nav></div></header>`;
+}
+
+function Home(){
+  const [tab,setTab] = useState("Websites");
+  const s = SERVICES[tab];
+  return html`<main>
+    <div className="wrap">
+      <div className="hero">
+        <h1>Small studio. Careful websites.</h1>
+        <p className="lead">We design and build websites, brands and simple apps for people who want something that works and looks like them.</p>
+        <a className="btn" href="#contact">Start a project</a><a className="btn ghost" href="#about">About us</a>
+      </div>
+      <div className="tabs" role="tablist" aria-label="What we make">
+        ${Object.keys(SERVICES).map(k=>html`<button key=${k} role="tab" className="tab" aria-selected=${tab===k} onClick=${()=>setTab(k)}>${k}</button>`)}
+      </div>
+      <div className="panel" role="tabpanel">
+        <div><h3>${tab}</h3><p>${s.text}</p></div>
+        <ul>${s.items.map(i=>html`<li key=${i}>${i}</li>`)}</ul>
+      </div>
+      <section>
+        <h2>How a project works</h2>
+        <div className="steps">
+          <div className="step"><h3>We talk</h3><p>A short call to understand your goals, audience and timeline.</p></div>
+          <div className="step"><h3>We build</h3><p>You see a working draft within days, not weeks, and tell us what to change.</p></div>
+          <div className="step"><h3>We launch</h3><p>We publish your site, hand over everything and stay around for questions.</p></div>
+        </div>
+      </section>
+      <section style=${{paddingTop:0}}>
+        <div className="band"><h2>Have an idea? Let’s make it real.</h2><a className="btn" href="#contact">Get in touch</a></div>
+      </section>
+    </div></main>`;
+}
+
+function About(){
+  const team = [["AK","Aarav","Design lead","Turns rough ideas into clear, friendly layouts."],["SM","Sana","Developer","Builds fast sites that work on any phone or laptop."],["RJ","Riya","Client care","Keeps every project on time and in plain language."]];
+  return html`<main><div className="wrap"><section>
+    <h1 style=${{fontSize:"clamp(2.2rem,6vw,4rem)",maxWidth:"16ch"}}>We keep things simple on purpose.</h1>
+    <p className="lead" style=${{marginTop:"1.2rem"}}>Sumit Studio is a small team that believes a good website should be easy to understand, quick to load and simple to maintain.</p>
+    <p>We work with a handful of clients at a time, so every project gets real attention. You talk to the people doing the work, and you always know what happens next.</p>
+  </section>
+  <section style=${{paddingTop:0}}><h2>The team</h2>
+    <div className="grid3">${team.map(t=>html`<div className="card" key=${t[1]}><div className="av">${t[0]}</div><h3>${t[1]}</h3><p style=${{color:"var(--muted)",marginBottom:".4rem"}}>${t[2]}</p><p style=${{marginBottom:0}}>${t[3]}</p></div>`)}</div>
+  </section>
+  <section style=${{paddingTop:0}}><h2>What we care about</h2>
+    <div className="grid3">
+      <div className="card"><h3>Clarity</h3><p style=${{marginBottom:0}}>Plain words and clean design, so visitors find what they need quickly.</p></div>
+      <div className="card"><h3>Speed</h3><p style=${{marginBottom:0}}>Light pages that load fast, even on a slow connection.</p></div>
+      <div className="card"><h3>Ownership</h3><p style=${{marginBottom:0}}>Your site, your content, your accounts. Nothing is locked away.</p></div>
+    </div></section></div></main>`;
+}
+
+function Contact(){
+  const [f,setF] = useState({name:"",email:"",msg:""});
+  const set = k => e => setF({...f,[k]:e.target.value});
+  const body = "Hi, I’m "+f.name+" ("+f.email+").\n\n"+f.msg;
+  const href = "mailto:"+EMAIL+"?subject="+encodeURIComponent("New project enquiry")+"&body="+encodeURIComponent(body);
+  const ready = f.name.trim() && f.email.trim() && f.msg.trim();
+  return html`<main><div className="wrap"><section><div className="two">
+    <div>
+      <h1 style=${{fontSize:"clamp(2.2rem,6vw,4rem)",maxWidth:"12ch"}}>Tell us what you need.</h1>
+      <p className="lead" style=${{margin:"1.2rem 0"}}>Write a few lines about your project. We reply within two working days.</p>
+      <div className="info">
+        <p><strong>Email</strong><br/>${EMAIL}</p>
+        <p><strong>Hours</strong><br/>Monday to Saturday, 10:00 to 18:00</p>
+        <p><strong>Based in</strong><br/>India, working with clients anywhere</p>
+      </div>
+    </div>
+    <div className="card">
+      <label htmlFor="n">Your name</label><input id="n" value=${f.name} onInput=${set("name")} autoComplete="name"/>
+      <label htmlFor="e">Your email</label><input id="e" type="email" value=${f.email} onInput=${set("email")} autoComplete="email"/>
+      <label htmlFor="m">About your project</label><textarea id="m" value=${f.msg} onInput=${set("msg")}></textarea>
+      <a className="btn" href=${ready?href:undefined} aria-disabled=${!ready} style=${{opacity:ready?1:.5,pointerEvents:ready?"auto":"none"}}>Send by email</a>
+      <p style=${{color:"var(--muted)",fontSize:".9rem",margin:".8rem 0 0"}}>This opens your email app with your message ready to send.</p>
+    </div>
+  </div></section></div></main>`;
+}
+
+function App(){
+  const read = () => { const h = location.hash.replace("#",""); return PAGES.includes(h)?h:"home"; };
+  const [view,setView] = useState(read());
+  useEffect(()=>{ const on = ()=>{ setView(read()); window.scrollTo(0,0); }; window.addEventListener("hashchange",on); return ()=>window.removeEventListener("hashchange",on); },[]);
+  useEffect(()=>{ document.title = (view==="home"?"":LABEL[view]+" | ")+"Sumit Studio"; },[view]);
+  const Page = {home:Home,about:About,contact:Contact}[view];
+  return html`<${React.Fragment}><${Header} view=${view}/><${Page}/>
+    <footer><div className="wrap"><span>© 2026 Sumit Studio</span><span>Made by Sumit</span></div></footer><//>`;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(html`<${App}/>`);
+</script>
+</body>
+</html>
